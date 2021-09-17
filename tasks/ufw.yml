@@ -1,0 +1,20 @@
+- name: Disabling firewall to prevent lock out
+  ufw:
+    state: disabled
+
+- name: Allowing SSH from monitor.valhallaonline.info
+  ufw:
+    rule: allow
+    port: '22'
+    src: 157.90.157.202
+       
+- name: Allowing checkMK agent port
+  ufw:
+    rule: allow
+    port: 6556
+    src: 157.90.157.202
+
+- name: setting default policy to reject and enabling firewall.
+  ufw:
+    policy: reject
+    state: enabled
