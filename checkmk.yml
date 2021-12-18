@@ -1,0 +1,8 @@
+- name: Configure CheckMK 
+  hosts: all 
+  become: yes
+  become_method: sudo
+
+  roles:
+      - checkmk
+      
