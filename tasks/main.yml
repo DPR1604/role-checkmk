@@ -1,5 +1,3 @@
 - name: Installing checkmk agent
   include_tasks: installagent.yml
 
-- name: Configuring Firewall
-  include_tasks: firewall.yml
