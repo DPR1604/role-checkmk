@@ -1,11 +1,11 @@
 - name: Installing agent from RPM
   yum: 
-    name: http://monitor.valhallaonline.info:8080/valhallaonline/check_mk/agents/check-mk-agent-2.0.0p11-1.noarch.rpm
+    name: https://checkmk.valhallaonline.info/cmk/check_mk/agents/check-mk-agent-2.0.0p19-1.noarch.rpm
     state: present
     disable_gpg_check: yes
   when: ansible_distribution == 'CentOS' or ansible_distribution == 'Red Hat Enterprise Linux' or ansible_distribution == 'AlmaLinux'
 
 - name: Installing agent from DEB
   apt:
-    deb: http://monitor.valhallaonline.info:8080/valhallaonline/check_mk/agents/check-mk-agent_2.0.0p11-1_all.deb
+    deb: https://checkmk.valhallaonline.info/cmk/check_mk/agents/check-mk-agent_2.0.0p19-1_all.deb
   when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
