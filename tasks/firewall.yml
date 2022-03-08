@@ -3,7 +3,7 @@
   ansible.builtin.iptables:
     chain: INPUT
     protocol: tcp
-    source: 157.90.157.202
+    source: 45.131.137.89
     destination_port: '22'
     jump: ACCEPT
 
@@ -12,7 +12,7 @@
   ansible.builtin.iptables:
     chain: INPUT
     protocol: tcp
-    source: 157.90.157.202
+    source: 45.131.137.89
     destination_port: '6556'
     jump: ACCEPT
 
@@ -26,14 +26,14 @@
   ufw:
     rule: allow
     port: '22'
-    src: 157.90.157.202
+    src: 45.131.137.89
        
 - name: Allowing checkMK agent port
   when: ansible_distribution == 'Ubuntu'
   ufw:
     rule: allow
     port: '6556'
-    src: 157.90.157.202
+    src: 45.131.137.89
 
 - name: setting default policy to reject and enabling firewall.
   when: ansible_distribution == 'Ubuntu'
