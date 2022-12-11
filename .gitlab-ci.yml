@@ -1,0 +1,11 @@
+---
+
+variables:
+  MOLECULE_ROLE_NAME: checkmk
+  PRIVILEGED: "1"
+  SCENARIOS: default
+  SCENARIO_DEFAULT: "ONLY_PLATFORMS=ubuntu2004"
+
+include:
+  - project: 'valhallaonline/ansible-roles/ci-cd-templates'
+    file: '/templates/molecule-ci-dynamic.yml'

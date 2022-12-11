@@ -1,0 +1,20 @@
+---
+dependency:
+  name: galaxy
+driver:
+  name: podman
+platforms:
+  - name: ${MOLECULE_NAME:-common_centos_7}
+    image: "${MOLECULE_IMAGE:-centos:7}"
+    command: ${MOLECULE_COMMAND:-"bash -c 'while true; do sleep 10000; done'"}
+    tmpfs: ${MOLECULE_TMPFS:-["/run","/tmp"]}
+    privileged: ${MOLECULE_PRIVILEGED:-True}
+    volumes:
+      - /sys/fs/cgroup:/sys/fs/cgroup:ro
+provisioner:
+  name: ansible
+  log: true
+scenario:
+  name: default
+verifier:
+  name: testinfra

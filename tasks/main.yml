@@ -1,3 +1,4 @@
-- name: Installing checkmk agent
-  include_tasks: installagent.yml
+---
 
+- name: Installing checkmk agent
+  ansible.builtin.include_tasks: installagent.yml
