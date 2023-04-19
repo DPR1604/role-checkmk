@@ -2,12 +2,12 @@
 
 - name: Installing agent from RPM
   ansible.builtin.yum:
-    name: https://checkmk.valhallaonline.info/cmk/check_mk/agents/check-mk-agent-2.0.0p19-1.noarch.rpm
+    name: 'https://{{ checkmk_url }}/{{ checkmk_instance_name }}/check_mk/agents/check-mk-agent-{{ checkmk_version }}-1.noarch.rpm'
     state: present
     disable_gpg_check: true
-  when: ansible_distribution == 'CentOS' or ansible_distribution == 'Red Hat Enterprise Linux' or ansible_distribution == 'AlmaLinux'
+  when: ansible_os_family == 'RedHat'
 
 - name: Installing agent from DEB
   ansible.builtin.apt:
-    deb: https://checkmk.valhallaonline.info/cmk/check_mk/agents/check-mk-agent_2.0.0p19-1_all.deb
-  when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
+    deb: 'https://{{ checkmk_url }}/{{ checkmk_instance_name }}/check_mk/agents/check-mk-agent_{{ checkmk_version }}-1_all.deb'
+  when: ansible_os_family == 'Debian'

@@ -1,9 +1,6 @@
 ---
 dependency:
   name: galaxy
-  options:
-    requirements-file: molecule/default/requirements.yml
-    role-file: molecule/default/requirements.yml
 driver:
   name: docker
 platforms:
@@ -18,6 +15,6 @@ provisioner:
   name: ansible
   log: true
 scenario:
-  name: default
+  name: firewall
 verifier:
   name: testinfra

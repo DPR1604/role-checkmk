@@ -2,3 +2,7 @@
 
 - name: Installing checkmk agent
   ansible.builtin.include_tasks: installagent.yml
+
+- name: Configure firewall
+  ansible.builtin.include_tasks: firewall.yml
+  when: checkmk_firewall
