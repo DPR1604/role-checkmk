@@ -3,8 +3,10 @@
 variables:
   MOLECULE_ROLE_NAME: checkmk
   PRIVILEGED: "1"
-  SCENARIOS: default
-  SCENARIO_DEFAULT: "ONLY_PLATFORMS=ubuntu2004"
+  SCENARIOS: default,firewall
+  SCENARIO_DEFAULT: "ONLY_PLATFORMS=ubuntu2004,centos7,almalinux8,almalinux9"
+  SCENARIO_FIREWALL: "ONLY_PLATFORMS=ubuntu2004,almalinux8"
+  SSH_KEY: '1'
 
 include:
   - project: 'valhallaonline/ansible-roles/ci-cd-templates'

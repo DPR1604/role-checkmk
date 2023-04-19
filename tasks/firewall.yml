@@ -1,44 +1,17 @@
 ---
 
-- name: Allowing ssh from monitor.valhallaonline.info
-  when: ansible_distribution == 'CentOS' or ansible_distribution == 'Red Hat Enterprise Linux' or ansible_distribution == 'AlmaLinux'
+- name: Allowing ssh from checkmk
   ansible.builtin.iptables:
     chain: INPUT
     protocol: tcp
-    source: 45.131.137.89
-    destination_port: '22'
+    source: '{{ check_mk_server_ip }}'
+    destination_port: '{{ ssh_port }}'
     jump: ACCEPT
 
 - name: Allowing checkmk agent port
-  when: ansible_distribution == 'CentOS' or ansible_distribution == 'Red Hat Enterprise Linux' or ansible_distribution == 'AlmaLinux'
   ansible.builtin.iptables:
     chain: INPUT
     protocol: tcp
-    source: 45.131.137.89
-    destination_port: '6556'
+    source: '{{ check_mk_server_ip }}'
+    destination_port: '{{ checkmk_agent_port }}'
     jump: ACCEPT
-
-- name: Disabling firewall to prevent lock out
-  when: ansible_distribution == 'Ubuntu'
-  ufw:
-    state: disabled
-
-- name: Allowing SSH from monitor.valhallaonline.info
-  when: ansible_distribution == 'Ubuntu'
-  ufw:
-    rule: allow
-    port: '22'
-    src: 45.131.137.89
-
-- name: Allowing checkMK agent port
-  when: ansible_distribution == 'Ubuntu'
-  ufw:
-    rule: allow
-    port: '6556'
-    src: 45.131.137.89
-
-- name: Setting default policy to reject and enabling firewall.
-  when: ansible_distribution == 'Ubuntu'
-  ufw:
-    policy: reject
-    state: enabled

@@ -1,0 +1,4 @@
+---
+roles:
+  - src: git@gitlab.valhallaonline.info:valhallaonline/ansible-roles/common.git
+    scm: git
